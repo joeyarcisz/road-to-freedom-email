@@ -41,12 +41,12 @@ header{position:relative;z-index:1;display:flex;justify-content:space-between;al
 .wm{width:150px;height:auto}
 .gear{width:52px;height:52px}
 
-main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;gap:clamp(32px,4vw,64px);padding:0 var(--edge)}
-.col{width:100%;max-width:600px;text-align:center;flex:none}
+main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;gap:clamp(28px,3.5vw,64px);padding:0 var(--edge)}
+.col{width:100%;max-width:clamp(480px,42vw,600px);text-align:center;flex:none}
 
 /* Side panels, Joey 9:32 am: "Let's utilize these spaces to provide more context to the project. Any relevant
    links?" Built like the kit's note box: red top rule, faint white ground, gold label, Rajdhani heads. */
-.side-panel{flex:0 1 290px;min-width:230px;align-self:center;border-top:3px solid var(--red);background:rgba(255,255,255,.06);padding:16px 20px 18px;text-align:left}
+.side-panel{flex:0 1 clamp(230px,20vw,290px);min-width:220px;align-self:center;border-top:3px solid var(--red);background:rgba(255,255,255,.06);padding:16px 20px 18px;text-align:left}
 .side-panel p.k{margin-bottom:4px;color:var(--gold)}
 .side-panel h3{font-family:Rajdhani,Arial,sans-serif;font-weight:700;font-size:23px;line-height:1.1;color:#fff;margin:14px 0 2px}
 .side-panel h3:first-of-type{margin-top:8px}
@@ -55,8 +55,13 @@ main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-
 .side-panel li{padding:8px 0;border-top:1px solid rgba(255,255,255,.22);font-size:15px;line-height:1.35}
 .side-panel a{color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)}
 .side-panel .k.next{margin-top:18px}
-@media (max-width:1320px){.side-panel{display:none}}
-@media (min-width:1321px){.who{display:none}}
+/* Joey, 9:38 am: "Make sure this format's good for mobile, tablet, laptop, and desktop."
+   Laptop and desktop (1180 px and up): three columns. Tablets and phones: the center column alone, with the
+   one-line links, because the panels can't fit beside or under it on one screen. Short screens tighten the
+   vertical spacing so the footer never gets pushed off. Checked at 390x844, 430x932, 768x1024, 1024x768,
+   1280x720, 1280x800, 1440x900 and 1920x1080. */
+@media (min-width:1181px){.who{display:none}}
+@media (max-width:1180px){.side-panel{display:none}.col{max-width:600px}}
 .dsp{font-family:Druk,Impact,sans-serif;font-weight:500;text-transform:uppercase;line-height:.95;letter-spacing:.5px;color:#fff;margin:0;font-size:clamp(60px,min(14vw,11vh),118px)}
 .r{color:var(--red)}
 .lead{font-size:clamp(16px,2.1vh,19px);line-height:1.42;margin:clamp(10px,1.8vh,16px) auto 0;max-width:500px}
@@ -79,7 +84,8 @@ main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-
 .under .days b{color:var(--gold)}
 
 .act{display:flex;justify-content:center;align-items:stretch;gap:14px;margin-top:clamp(18px,3.6vh,32px)}
-.cent{background:#fff;color:var(--ink);display:flex;align-items:center;gap:12px;padding:10px 14px;text-align:left;max-width:330px}
+.cent{background:#fff;color:var(--ink);display:flex;align-items:center;gap:12px;padding:10px 14px;text-align:left;flex:1 1 auto;max-width:330px}
+.act .cta{flex:0 0 auto}
 .cent img{width:84px;height:auto;flex:none}
 .cent p{margin:0;font-size:12.5px;line-height:1.35}
 .cta{display:flex;align-items:center;justify-content:center;padding:0 26px;background:var(--red);color:#fff;font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap}
@@ -96,6 +102,16 @@ footer i{font-style:italic}
   .cta{padding:15px 26px}
 }
 @media (max-height:600px){.page{height:auto;min-height:100svh}}
+@media (max-height:820px){
+  .dsp{font-size:clamp(54px,min(14vw,9.6vh),100px)}
+  .lead{margin-top:8px}
+  .who{margin-top:8px}
+  .goal{margin-top:clamp(12px,2.4vh,22px)}
+  .amount{font-size:clamp(46px,min(12vw,7.8vh),78px)}
+  .slider{margin:8px 0 2px}
+  .act{margin-top:clamp(12px,2.4vh,22px)}
+  footer{padding-top:10px;padding-bottom:14px}
+}
 @media (prefers-reduced-motion:reduce){.fill,.thumb{transition:none}}
 </style>
 </head>
